@@ -13,11 +13,12 @@ router.post('/register',
     ],
     async (req, res) => {
         try {
+            const { email, password } = req.body
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array(), message: 'Validation is not passed(' })
             }
-            const { email, password } = req.body
+            
 
             const isUserExisting = await User.findOne({ email })
             if (isUserExisting) {
@@ -27,7 +28,7 @@ router.post('/register',
             const hashedPassword = await bcrypt.hash(password, 12)
             const user = new User({ email, password: hashedPassword })
             await user.save()
-            res.status(201).json({ message: 'User is created into DB' })
+            res.status(201).json({ message: 'User is created' })
 
         } catch (e) {
             res.status(500).json({ message: `It is an error in /register request, try again)` })
@@ -35,17 +36,19 @@ router.post('/register',
     })
 router.post('/login',
     [
-        check('email', 'An email is incorrect').isEmail(),
-        check('password', 'The password should be exist').normalizeEmail().exists()
+        check('email', 'An email is incorrect').normalizeEmail().isEmail(),
+        check('password', 'The password should be exist').exists()
     ],
     async (req, res) => {
         try {
+            const { email, password } = req.body  
             const errors = validationResult(req)
             
             if(!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array(), message: 'Validation is not passed(' })
             }
-            const { email, password } = req.body
+            
+          
             const user = await User.findOne({ email })
             if (!user) {
                 Promise.reject("the user is not yet existed")
