@@ -10,6 +10,9 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
   },
+  "engines": {
+    "node": "14.15.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/noirkotyara/MERN_project.git"
