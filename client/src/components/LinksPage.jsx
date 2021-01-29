@@ -18,7 +18,7 @@ const LinksPage = () => {
     }, [errors, message, clearErrors])
 
     const getLinksList = useCallback(async () => {
-        const response = await request(`/api/link/`, 'GET', null, { Authorization: `Bearer ${auth.token}`, ['Content-Type']: 'application/json' })
+        const response = await request(`/api/link/`, 'GET', null, { Authorization: `Bearer ${auth.token}`, ['Content-Type']: 'application/json' }, auth)
         setLinksList(response)
 
     }, [])

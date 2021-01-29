@@ -20,7 +20,7 @@ const DetailsPage = () => {
 
     const getLinkDetails = useCallback(async () => {
         try {
-            const response = await request(`/api/link/${linkId}`, 'GET', null, { Authorization: `Bearer ${auth.token}` })
+            const response = await request(`/api/link/${linkId}`, 'GET', null, { Authorization: `Bearer ${auth.token}` }, auth)
             setLinkDetails(response)
         } catch (e) { }
     }, [auth.token, request, linkId])

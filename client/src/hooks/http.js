@@ -4,7 +4,7 @@ import { useCallback, useState } from "react"
 export const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState(null)
-    const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
+    const request = useCallback(async (url, method = 'GET', body = null, headers = {}, auth) => {
         setIsLoading(true)
         try {
             if (body){
@@ -14,6 +14,11 @@ export const useHttp = () => {
             const data = await response.json()
             
             if (!response.ok) {
+                debugger
+                if(data.message === 'User is not verified'){
+                    auth.logout()
+                    throw new Error('Session is ended! Log in please again')
+                }
                 throw new Error(data.message || 'smth wrong')
             }
             setIsLoading(false)

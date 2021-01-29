@@ -27,7 +27,7 @@ const CreatePage = () => {
                     '/api/link/generate',
                     'POST',
                     { from: event.link },
-                    { Authorization: `Bearer ${auth.token}`, ['Content-Type']: 'application/json' })
+                    { Authorization: `Bearer ${auth.token}`, ['Content-Type']: 'application/json' }, auth)
                 history.push(`/details/${response.link._id}`)
             }else {
                 throw new Error ('link is empty')

@@ -23,7 +23,7 @@ const AuthPage = () => {
                 `/api/auth/${submitButton}`, //url
                 'POST', //method
                 { ...values}, //data for server
-                { ['Content-Type']: 'application/json' }) //what type of data
+                { ['Content-Type']: 'application/json' }, auth) //what type of data
             message(response.message)
             auth.login(response.token, response.userId)
         } catch (e) {}
