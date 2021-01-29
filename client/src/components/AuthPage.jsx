@@ -1,4 +1,4 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { useHttp } from '../hooks/http';
@@ -18,7 +18,7 @@ const AuthPage = () => {
 
     const submitHandler = async values => {
         try {
-            console.log( `/api/auth/${submitButton}: ${JSON.stringify(values)}`)
+            // console.log( `/api/auth/${submitButton}: ${JSON.stringify(values)}`)
             const response = await request(
                 `/api/auth/${submitButton}`, //url
                 'POST', //method

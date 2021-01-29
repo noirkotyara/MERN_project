@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react"
 
 export const useAuth = () => {
     const [token, setToken] = useState(null)
+    const [ready, setReady] = useState(false)
     const [userId, setUserId] = useState(null)
 
     const storageName = 'userData'
@@ -24,9 +25,11 @@ export const useAuth = () => {
         const localStoragedata = JSON.parse(localStorage.getItem(storageName)) 
         if(localStoragedata && localStoragedata.token){
             login (localStoragedata.token, localStoragedata.userId)
-        }
+        
+    }
+        setReady(!!token)
     }, [login])
 
 
-    return {login, logout, token, userId}
+    return {login, logout, token, userId, ready}
 }
