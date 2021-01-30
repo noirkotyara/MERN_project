@@ -6,6 +6,7 @@ const path = require('path')
 const app = express()
 const PORT = process.env.PORT || config.get('port')  
 
+app.use(express.static(path.join(__dirname)));
 //middleware
 app.use(express.json({extended: true}))
 app.use('/api/auth', require('./routes/auth-routes'))
