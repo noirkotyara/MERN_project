@@ -30,6 +30,8 @@ const start = async() => {
     }
 }
 
+//fix: refactor hard coded connection string to Heroku config var
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
   
