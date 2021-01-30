@@ -1,6 +1,7 @@
 const express = require ('express')
 const config = require('config')
 const mongoose = require('mongoose')
+const path = require('path')
 
 const app = express()
 const PORT = process.env.PORT || config.get('port')  
@@ -31,9 +32,9 @@ const start = async() => {
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
-  const path = require('path')
+  
   app.get('*', (req, res) => {
-          res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+          res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
         });
 }
 start()
