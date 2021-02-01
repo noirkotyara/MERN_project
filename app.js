@@ -13,7 +13,7 @@ app.use('/api/auth', require('./routes/auth-routes'))
 app.use('/api/link', require('./routes/link-routes'))
 app.use('/t', require('./routes/redirect-routes'))
 app.use(cors())
-app.get('/', (req, res) => { res.send('Hello from Express!')})
+// app.get('/', (req, res) => { res.send('Hello from Express!')})
 
 const start = async() => {
     console.log('START')
