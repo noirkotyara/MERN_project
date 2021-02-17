@@ -23,7 +23,7 @@ router.post('/generate', auth, async (req, res) => {
         res.status(500).json({ message: `It is an error in /generate request, try again)` })
     }
 })
-
+ 
 router.get('/', auth, async (req,res) => {
     try{
         const linkslist = await Link.find({owner: req.user.userId})

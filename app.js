@@ -3,7 +3,6 @@ const config = require('config')
 const mongoose = require('mongoose')
 const path = require('path')
 const cors = require('cors')
-
 const app = express()
 const PORT = process.env.PORT || config.get('port')  
 
@@ -14,6 +13,10 @@ app.use('/api/link', require('./routes/link-routes'))
 app.use('/t', require('./routes/redirect-routes'))
 app.use(cors())
 // app.get('/', (req, res) => { res.send('Hello from Express!')})
+app.use('/test', (req, res) => {
+    res.send('Test complete');
+})
+
 
 const start = async() => {
     console.log('START')
@@ -44,6 +47,7 @@ if (process.env.NODE_ENV === 'production') {
         });
 }
 
+module.exports.app = app;
 
 start()
 
