@@ -10,6 +10,8 @@ const LinkDetails = (props) => {
     }
     const content = { 
         fontWeight: "bold",
+        wordWrap: "break-word",
+        padding: "5px"
     }
     return (
         <div>
@@ -17,7 +19,7 @@ const LinkDetails = (props) => {
                 <tbody>
                     <tr>
                         <td><span style={names}>Original :</span></td>
-                        <td><a style={content} href={from}>{from}</a> <FontAwesomeIcon size="lg" icon={Icons.faLink}/></td>
+                        <td><a style={content} href={from}>{from}</a><FontAwesomeIcon size="lg" icon={Icons.faLink}/></td>
                     </tr>
                     <tr>
                         <td><span style={names}>Short :</span></td>
