@@ -1,8 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Field, Form, Formik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import { useHttp } from '../hooks/http';
 import { useMessage } from '../hooks/message';
+import * as Icons from '@fortawesome/free-solid-svg-icons';
 
 const AuthPage = () => {
     
@@ -18,7 +20,6 @@ const AuthPage = () => {
 
     const submitHandler = async values => {
         try {
-            // console.log( `/api/auth/${submitButton}: ${JSON.stringify(values)}`)
             const response = await request(
                 `/api/auth/${submitButton}`, //url
                 'POST', //method
@@ -29,8 +30,8 @@ const AuthPage = () => {
         } catch (e) {}
     }
     return (<div>
-        AuthPage
-        <div>
+            <a className="btn-floating btn-large black pulse"><FontAwesomeIcon icon={Icons.faFeatherAlt} size="lg"/></a> 
+        <div style={{padding: "1rem"}}>
             <Formik
                 initialValues={{ email: '', password: '' }}
                 onSubmit={submitHandler}
@@ -44,8 +45,10 @@ const AuthPage = () => {
                         name="password"
                         type="password"
                     />
-                    <button disabled={isLoading} type="submit" onClick={() => setSubmitButton('login')}>LogIn</button>
-                    <button disabled={isLoading} type="submit" onClick={() => setSubmitButton('register')}>Registration</button>
+                    <div className="row">
+                        <div className="col s11 m5" style={{margin: "5px"}}><button disabled={isLoading} className="btn waves-effect waves-teal" type="submit" onClick={() => setSubmitButton('login')}>LogIn</button></div>
+                        <div className="col s11 m5" style={{margin: "5px"}}><button disabled={isLoading} className="btn waves-effect waves-teal" type="submit" onClick={() => setSubmitButton('register')}>Registration</button></div>
+                    </div>
                 </Form>
             </Formik>
         </div>

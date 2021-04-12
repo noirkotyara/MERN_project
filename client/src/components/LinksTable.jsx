@@ -1,6 +1,7 @@
 
-import { Link } from "react-router-dom"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import * as Icons from '@fortawesome/free-solid-svg-icons';
 
 const LinksTable = (props) => {
   if(!props.linksList.length){
@@ -10,12 +11,12 @@ const LinksTable = (props) => {
   }
   return (
     <div>
-      <table>
+      <table style={{tableLayout: "fixed"}}>
         <thead>
           <tr>
-            <th>№</th>
-            <th>Original</th>
-            <th>Short</th>
+            <th style={{width: "50px", textAlign: "center"}}>№</th>
+            <th style={{width: "300px"}}>Shortened</th>
+            <th style={{width: "400px"}}>Original</th>
             <th></th>
           </tr>
         </thead>
@@ -23,10 +24,15 @@ const LinksTable = (props) => {
         <tbody>
           {props.linksList.map((link, index) => {
             return <tr key={index}>
-              <td>{index}</td>
+              <td style={{textAlign: "center"}}>{index + 1}</td>
               <td>{link.to}</td>
-              <td>{link.from}</td>
-              <td> <Link to={`/details/${link._id}`}>Open</Link> </td>
+              <td><div style={{wordWrap: "break-word", padding: "5px" }}>{link.from}</div></td>
+              <td> <Link to={`/details/${link._id}`}> 
+              <span className="btn-floating btn-large black pulse">
+                <FontAwesomeIcon icon={Icons.faFolderOpen} size="lg" color="white"/>
+                </span>
+                </Link> 
+                </td>
             </tr>
           })}
 
@@ -38,4 +44,4 @@ const LinksTable = (props) => {
 
 
 }
-export default LinksTable
+export default LinksTable;

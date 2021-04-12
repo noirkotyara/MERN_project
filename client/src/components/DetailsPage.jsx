@@ -1,10 +1,12 @@
 import { useCallback, useContext, useEffect, useState } from "react"
-import { NavLink, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import AuthContext from "../context/AuthContext"
 import { useHttp } from "../hooks/http"
 import { useMessage } from "../hooks/message"
 import { Preloader } from "./common/Preloader"
 import LinkDetails from "./LinkDetails"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as Icons from '@fortawesome/free-solid-svg-icons';
 
 const DetailsPage = () => {
     const linkId = useParams().id
@@ -31,7 +33,7 @@ const DetailsPage = () => {
 
     if (!loading && linkDetails) {
         return (<div>
-            <span> Your link`s details</span>
+            <h5>Your link`s details <span className="btn-floating btn-large black pulse"><FontAwesomeIcon icon={Icons.faInfo} size="lg"/></span> </h5>
             <LinkDetails linkDetails={linkDetails} />
         </div>)
     }

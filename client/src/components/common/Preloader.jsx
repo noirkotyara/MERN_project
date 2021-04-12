@@ -1,7 +1,7 @@
 export const Preloader = () => {
     return (
         <div className="preloader-wrapper big active">
-      <div className="spinner-layer spinner-blue">
+      <div className="spinner-layer spinner-black">
         <div className="circle-clipper left">
           <div className="circle"></div>
         </div><div className="gap-patch">
@@ -11,8 +11,5 @@ export const Preloader = () => {
         </div>
       </div>
     </div>
-    // <div>
-    //   Loading....
-    // </div>
     )
 }

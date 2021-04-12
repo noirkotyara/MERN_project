@@ -1,10 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useCallback, useContext, useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import AuthContext from "../context/AuthContext"
 import { useHttp } from "../hooks/http"
 import { useMessage } from "../hooks/message"
 import { Preloader } from "./common/Preloader"
 import LinksTable from './LinksTable'
+import * as Icons from '@fortawesome/free-solid-svg-icons';
 
 const LinksPage = () => {
     const { request, loading, clearErrors, errors } = useHttp()
@@ -28,7 +29,7 @@ const LinksPage = () => {
 
     if (!loading && linksList) {
         return (<div>
-            <span>Links Page</span>
+            <h5>Here is your <span style={{textDecoration: "underline"}}>links <FontAwesomeIcon icon={Icons.faArrowDown}/></span> </h5>
             <LinksTable linksList={linksList}/>
         </div>)
     }

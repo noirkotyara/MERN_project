@@ -63,7 +63,7 @@ router.post('/login',
                 config.get('jwtSecret'),
                 {expiresIn:'1h'}
             )
-             res.json({token, userId: user.id})   
+             res.json({token})   
 
         } catch (e) {
             res.status(500).json({ message: `It is an error in /login request, try again)` })

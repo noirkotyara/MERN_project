@@ -14,7 +14,6 @@ export const useHttp = () => {
             const data = await response.json()
             
             if (!response.ok) {
-                debugger
                 if(data.message === 'User is not verified'){
                     auth.logout()
                     throw new Error('Session is ended! Log in please again')

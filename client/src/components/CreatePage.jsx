@@ -38,7 +38,7 @@ const CreatePage = () => {
         return <Preloader/>
     }
     return (<div>
-        Create Page
+        <h5>Create your shortened link here and now with <br/> ctrl + <span className="btn-floating btn-large black pulse">c &amp; v</span></h5>
         <div><Formik
             initialValues={{ link: '' }}
             onSubmit={submitHandler}
